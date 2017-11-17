@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="icon" href="img/index.png">
+    <title>Video For You</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!--Navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark mdb-color darken-4 fixed-top">
+    <div class="container">
+            <!-- Navbar brand -->
+        <a class="navbar-brand" href="#">V4U</a>
+
+        <!-- Collapse button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#"><i class="fa fa-home fa-fw"></i> Trang chủ <span class="sr-only">(current)</span></a>
+                </li>
+                <!-- Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-youtube"></i> Chức năng</a>
+                    <div class="dropdown-menu dropdown-primary animated fadeIn" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#upload"><i class="fa fa-upload"></i> Thêm video</a>
+                        <a class="dropdown-item" href="#playlist"><i class="fa fa-list"></i> Playlist</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fa fa-info"></i> About</a>
+                </li>
+            </ul>
+            <!-- Links -->
+
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="#signup" class="nav-link"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"></a>
+                </li>
+            </ul>
+        </div>
+        <!-- Collapsible content -->
+    </div>
+</nav>
+
+    <div class="modal animated fadeIn" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-bold">Đăng nhập</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form name="signinForm" class="modal-body mx-3">
+                    <div class="md-form">
+                        <i class="fa fa-envelope prefix grey-text"></i>
+                        <input type="text" name="username" class="form-control">
+                        <label>Tài khoản</label>
+                    </div>
+
+                    <div class="md-form">
+                        <i class="fa fa-lock prefix grey-text"></i>
+                        <input type="password" name="password" class="form-control validate">
+                        <label data-error="">Mật khẩu</label>
+                    </div>
+                </form>
+				<div class="mx-5 pt-3 mb-1">
+					<p class="font-small grey-text d-flex justify-content-end">Không phải thành viên? <a href="#signup" class="blue-text ml-1"> Đăng ký</a></p>
+				</div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button class="btn btn-default" type="button" onclick="signIn()">Đăng nhập</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--/.Navbar-->
+    <!-- main -->
+<div class="container" id="v-view">
+    
+</div>
+<!--Footer-->
+<footer class="page-footer center-on-small-only mdb-color darken-4" style="clear: both">
+
+    <!--Footer Links-->
+    <div class="container">
+        <div class="row my-4">
+
+            <!--First column-->
+            <div class="col-md-4 col-lg-4">
+                <h5 class="title mb-4 font-bold">Video For You</h5>
+                <p>Dự án học tập và làm việc cùng API.</p>
+                <p>Bạn có thể tạo playlist cho riêng mình, chỉnh sửa mọi thông tin theo những gì bạn thích. Thao tác nhanh chóng với giao diện kéo thả.</p>
+            </div>
+            <!--/.First column-->
+
+            <hr class="clearfix w-100 d-md-none">
+
+            <!--Second column-->
+            <div class="col-md-2 col-lg-2 ml-auto">
+                <h5 class="title mb-4 font-bold">Link</h5>
+                <ul>
+                    <p><a href="#">Trang chủ</a></p>
+                    <p><a href="#playlist">Playlist</a></p>
+                    <p><a href="#upload">Thêm Video</a></p>
+                </ul>
+            </div>
+            <!--/.Second column-->
+
+            <hr class="clearfix w-100 d-md-none">
+
+            <!--Third column-->
+            <div class="col-md-4 col-lg-3">
+                <h5 class="title mb-4 font-bold">Liên hệ</h5>
+                <!--Info-->
+                <p><i class="fa fa-home mr-3"></i> C1707G, FPT Aptech, 8A Tôn Thất Thuyết, Hà Nội</p>
+                <p><i class="fa fa-envelope mr-3"></i> hoangdd00524@fpt.edu.vn</p>
+                <p><i class="fa fa-phone mr-3"></i> 01 234 567 89</p>
+                <p><i class="fa fa-print mr-3"></i> 09 876 543 21</p>
+            </div>
+            <!--/.Third column-->
+
+            <hr class="clearfix w-100 d-md-none">
+
+            <!--Fourth column-->
+            <div class="col-md-2 col-lg-2 text-center">
+                <h5 class="title mb-4 font-bold">Follow</h5>
+                <!--Social buttons-->
+                <div class="social-section mt-2 ">
+                    <!--Facebook-->
+                    <a type="button" class="btn-floating btn-small btn-fb"><i class="fa fa-facebook"></i></a>
+                    <!--Twitter-->
+                    <a type="button" class="btn-floating btn-small btn-tw"><i class="fa fa-twitter"></i></a>
+                    <!--Google +-->
+                    <a type="button" class="btn-floating btn-small btn-gplus"><i class="fa fa-google-plus"></i></a>
+                    <!--Dribbble-->
+                    <a type="button" class="btn-floating btn-small btn-dribbble"><i class="fa fa-dribbble"></i></a>
+                </div>
+            </div>
+            <!--/.Fourth column-->
+
+        </div>
+    </div>
+    <!--/.Footer Links-->
+
+    <!--Copyright-->
+    <div class="footer-copyright">
+        <div class="container-fluid">
+            © 2017 Copyright: <a href="#"> Đỗ Hoàng - FPT Aptech - C1707G </a> & Support by: <a href="#"> Mr. Đào Xuân Hùng</a>
+
+        </div>
+    </div>
+    <!--/.Copyright-->
+
+</footer>
+<!--/.Footer-->
+
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="js/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="js/mdb.min.js"></script>
+<script type="text/javascript" src="js/toastr.min.js"></script>
+<script type="text/javascript" src="js/navbar.js"></script>
+</body>
+
+</html>
