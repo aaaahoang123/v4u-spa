@@ -18,15 +18,15 @@
 </head>
 
 <body>
-    <!--Navbar-->
+<!--Navbar-->
 <nav class="navbar navbar-expand-lg navbar-dark mdb-color darken-4 fixed-top">
     <div class="container">
-            <!-- Navbar brand -->
+        <!-- Navbar brand -->
         <a class="navbar-brand" href="#">V4U</a>
 
         <!-- Collapse button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-            aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
 
         <!-- Collapsible content -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -44,8 +44,11 @@
                         <a class="dropdown-item main-nav-item" href="#playlist"><i class="fa fa-list"></i> Playlist</a>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fa fa-info"></i> About</a>
+                <li class="nav-item main-nav-item">
+                    <a class="nav-link" href="#about"><i class="fa fa-info"></i> About</a>
+                </li>
+                <li class="nav-item main-nav-item">
+                    <a class="nav-link" href="https://github.com/aaaahoang123/v4u-spa" target="_blank"><i class="fa fa-github"></i> Github</a>
                 </li>
             </ul>
             <!-- Links -->
@@ -62,42 +65,44 @@
         <!-- Collapsible content -->
     </div>
 </nav>
-
-    <div class="modal animated fadeIn" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header text-center">
-                    <h4 class="modal-title w-100 font-bold">Đăng nhập</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+<div class="progress">
+    <div class="progress-bar bg-warning" role="progressbar" style="width: 25%; display: none" id="progress-bar"></div>
+</div>
+<div class="modal animated fadeIn" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-bold">Đăng nhập</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form name="signinForm" class="modal-body mx-3">
+                <div class="md-form">
+                    <i class="fa fa-envelope prefix grey-text"></i>
+                    <input type="text" name="username" class="form-control">
+                    <label>Tài khoản</label>
                 </div>
-                <form name="signinForm" class="modal-body mx-3">
-                    <div class="md-form">
-                        <i class="fa fa-envelope prefix grey-text"></i>
-                        <input type="text" name="username" class="form-control">
-                        <label>Tài khoản</label>
-                    </div>
 
-                    <div class="md-form">
-                        <i class="fa fa-lock prefix grey-text"></i>
-                        <input type="password" name="password" class="form-control validate">
-                        <label data-error="">Mật khẩu</label>
-                    </div>
-                </form>
-				<div class="mx-5 pt-3 mb-1">
-					<p class="font-small grey-text d-flex justify-content-end">Không phải thành viên? <a href="#signup" class="blue-text ml-1"> Đăng ký</a></p>
-				</div>
-                <div class="modal-footer d-flex justify-content-center">
-                    <button class="btn btn-default" type="button" onclick="signIn()">Đăng nhập</button>
+                <div class="md-form">
+                    <i class="fa fa-lock prefix grey-text"></i>
+                    <input type="password" name="password" class="form-control validate">
+                    <label data-error="">Mật khẩu</label>
                 </div>
+            </form>
+            <div class="mx-5 pt-3 mb-1">
+                <p class="font-small grey-text d-flex justify-content-end">Không phải thành viên? <a href="#signup" class="blue-text ml-1"> Đăng ký</a></p>
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <button class="btn btn-default" type="button" onclick="signIn()">Đăng nhập</button>
             </div>
         </div>
     </div>
+</div>
 <!--/.Navbar-->
-    <!-- main -->
+<!-- main -->
 <div class="container" id="v-view">
-    
+
 </div>
 <!--Footer-->
 <footer class="page-footer center-on-small-only mdb-color darken-4" style="clear: both">
@@ -123,6 +128,8 @@
                     <p><a href="#">Trang chủ</a></p>
                     <p><a href="#playlist">Playlist</a></p>
                     <p><a href="#upload">Thêm Video</a></p>
+                    <p><a href="#about">About</a></p>
+                    <p><a href="https://github.com/aaaahoang123/v4u-spa" target="_blank">Github</a></p>
                 </ul>
             </div>
             <!--/.Second column-->
@@ -175,8 +182,8 @@
 </footer>
 <!--/.Footer-->
 
-    <!-- SCRIPTS -->
-    <!-- JQuery -->
+<!-- SCRIPTS -->
+<!-- JQuery -->
 
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 <!-- Bootstrap tooltips -->
@@ -188,5 +195,4 @@
 <script type="text/javascript" src="js/toastr.min.js"></script>
 <script type="text/javascript" src="js/navbar.min.js"></script>
 </body>
-
 </html>

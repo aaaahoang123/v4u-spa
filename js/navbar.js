@@ -147,17 +147,32 @@ function convertLocationSearchToJSON(search) {
 }
 
 function loadPage(hash) {
-    $.ajax({
-        url: hash,
-        method: 'GET',
-        success: function(response) {
-            $("#v-view").html(response);
-        },
-        error: function(response) {
-            var resp = response.responseText;
-            $("#v-view").html(resp);
+    document.querySelector("#progress-bar").style.display = "";
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState === 1) {
+            document.querySelector("#progress-bar").style.width = "25%"
         }
-    })
+        if (this.readyState === 2) {
+            document.querySelector("#progress-bar").style.width = "50%"
+        }
+        if (this.readyState === 3) {
+            document.querySelector("#progress-bar").style.width = "75%"
+        }
+        if (this.readyState === 4) {
+            var resp = this.responseText;
+            $("#v-view").html(resp);
+            document.querySelector("#progress-bar").style.width = "95%";
+            $(document).ready(function () {
+                setTimeout(function () {
+                    document.querySelector("#progress-bar").style.display = "none";
+                    document.querySelector("#progress-bar").style.width = "0";
+                }, 500)
+            })
+        }
+    };
+    xhttp.open('GET', hash, true);
+    xhttp.send();
 }
 function loadPageByHash() {
     if (location.hash === "") {
@@ -165,6 +180,9 @@ function loadPageByHash() {
     }
     else if (location.hash === "#playlist") {
         loadPage('pages/playlist.htm');
+    }
+    else if (location.hash === "#about") {
+        loadPage('pages/about.htm');
     }
     else if (location.hash.match(/#upload/gi) !== null) {
         loadPage('pages/upload.htm');
@@ -180,7 +198,7 @@ function loadPageByHash() {
     }
 }
 function activeNavbarByHash() {
-    var hashList = [new RegExp( ),  new RegExp("#upload"), new RegExp("#playlist"), new RegExp("#signup")];
+    var hashList = [new RegExp( ),  new RegExp("#upload"), new RegExp("#playlist"), new RegExp("#about"), new RegExp("#signup")];
     var navItems = document.querySelectorAll(".main-nav-item");
     if (location.hash === "") {
         navItems[0].className += " active";
