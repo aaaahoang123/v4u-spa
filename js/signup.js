@@ -1,5 +1,5 @@
 if (userToken !== null) {
-    location.href = "../index.html";
+    location.href = "/";
 }
 var signupData = function (username, password, email, fullName, gender, birthDay, avatar) {
     this.data = {

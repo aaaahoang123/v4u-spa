@@ -50,11 +50,14 @@ signinData.prototype.signIn = function () {
                 toastr["success"]("Đăng nhập thành công!");
             },100);
             setTimeout (function () {
-                if (location.pathname.match(/signup.html/) === null) {
-                    location.reload();
+                var patt = new RegExp("#signup", "gi");
+                console.log(patt.test(location.pathname));
+                console.log(location.pathname);
+                if (patt.test(location.pathname)) {
+                    location.href = "/";
                 }
                 else {
-                    location.href = "../index.html";
+                    location.reload();
                 }
             },1200);
         }
@@ -176,7 +179,27 @@ function loadPageByHash() {
         loadPage('pages/home.htm');
     }
 }
+function activeNavbarByHash() {
+    var hashList = [new RegExp( ),  new RegExp("#upload"), new RegExp("#playlist"), new RegExp("#signup")];
+    var navItems = document.querySelectorAll(".main-nav-item");
+    if (location.hash === "") {
+        navItems[0].className += " active";
+    }
+    else {
+        navItems[0].className = navItems[0].className.replace("active", "");
+        for (var i = 1; i < hashList.length; i++) {
+            if (hashList[i].test(location.hash)) {
+                navItems[i].className += " active";
+            }
+            else {
+                navItems[i].className = navItems[i].className.replace("active", "");
+            }
+        }
+    }
+}
+// loadpage by hash
 loadPageByHash();
+activeNavbarByHash();
 window.addEventListener("hashchange",function(event){
     $(".modal").modal('hide');
     $(".popover").popover('hide');
@@ -187,4 +210,5 @@ window.addEventListener("hashchange",function(event){
         console.log(error);
     }
     loadPageByHash();
+    activeNavbarByHash();
 });

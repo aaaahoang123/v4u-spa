@@ -13,7 +13,8 @@
         padding-top: 10px;
     }
     .material .material-select.filled>.material-title, .material .material-select>input:checked+.material-title {
-        top: -5px;
+        top: -18px;
+        color: #757575
     }
     .material .material-select ul {
         z-index: 9999;
@@ -32,7 +33,7 @@
             <div class="modal-body">
                 <p class="grey-text">Playlist là tính năng dành cho thành viên! Nếu bạn là thành viên, hãy đăng nhập, nếu bạn chưa phải thành viên, hãy đăng ký để tham gia với chúng tôi!</p>
                 <div class="text-center">
-                    <a type="button" class="btn btn-primary btn-sm" href="signup.html"><i class="fa fa-registered"></i> Đăng ký</a>
+                    <a type="button" class="btn btn-primary btn-sm" href="#signup"><i class="fa fa-registered"></i> Đăng ký</a>
                     <a type="button" class="btn btn-default btn-sm" onclick="signInFromAlert()"><i class="fa fa-sign-in"></i> Đăng nhập</a>
                 </div>
             </div>
@@ -43,7 +44,7 @@
 <main class="container" style="display: none">
     <!-- bread crumb -->
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
         <li class="breadcrumb-item active">Thêm video</li>
     </ol>
     <!-- /bread crumb -->
@@ -150,7 +151,7 @@
 </main>
 
 <script type="text/javascript" src="js/jquery.material.form.min.js"></script>
-<script type="text/javascript" src="js/upload.js"></script>
+<script type="text/javascript" src="js/upload.min.js"></script>
 <script>
     if (userToken !== null) {
         loadUserPlaylist();
