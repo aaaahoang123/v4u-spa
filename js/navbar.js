@@ -184,10 +184,13 @@ function activeNavbarByHash() {
     var navItems = document.querySelectorAll(".main-nav-item");
     if (location.hash === "") {
         navItems[0].className += " active";
+        for (var i = 1; i < hashList.length; i++) {
+            navItems[i].className = navItems[i].className.replace("active", "");
+        }
     }
     else {
         navItems[0].className = navItems[0].className.replace("active", "");
-        for (var i = 1; i < hashList.length; i++) {
+        for (i = 1; i < hashList.length; i++) {
             if (hashList[i].test(location.hash)) {
                 navItems[i].className += " active";
             }
