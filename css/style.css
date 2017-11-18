@@ -1,5 +1,9 @@
 body {
-        padding-top: 55px;
+        padding-top: 70px;
+}
+.navbar .dropdown-menu a.active,
+.navbar .dropdown-menu a:active {
+    color: #fff !important;
 }
 .shadow-box {
         padding: 5px 5px;
@@ -154,4 +158,7 @@ div.row.display-flex div.col-lg-4.col-md-6.col-sm-6 div.card{
 }
 #sticky-playlist-tabs {
     top: 58px; display: none
+}
+.main-title:before, .title:before {
+    content: none !important;
 }

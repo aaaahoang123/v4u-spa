@@ -1,4 +1,7 @@
 $(document).ready(function () {
+    // popovers Initialization
+    $('[data-toggle="popover"]').popover()
+    //hover popover
     $(".hover-popover").popover({
         trigger: "hover"
     });
@@ -6,6 +9,7 @@ $(document).ready(function () {
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
     });
+
 });
 
 // method for videoData object

@@ -190,6 +190,9 @@ function loadUserPlaylist() {
     xhttp.setRequestHeader("Authorization", localStorage.getItem('token'));
     xhttp.send();
 }
+if (userToken !== null) {
+    loadUserPlaylist();
+}
 function checkNDemoVideo() {
     videoDataToSend.data.attributes.youtubeId = document.forms["uploadForm"]["youtubeId"].value;
     takeInfoOfVideo();

@@ -86,3 +86,10 @@ function resetForm() {
    }
    labels[5].setAttribute("class", "active");
 }
+$(document).ready(function () {
+    $('.material').materialForm();// change the select of form to material style
+    $('.datepicker').datepicker({
+        format: 'mm/dd/yyyy',
+        Date: '-3d'
+    }); // Change the time input to date picker
+});

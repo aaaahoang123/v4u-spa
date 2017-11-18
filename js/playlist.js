@@ -105,7 +105,7 @@ function bindPlaylist(playlist) {
 
     var addVideo = document.createElement("li");                                     //     <li><a><i class="fa fa-plus"></i>Thêm video</a></li> //     </ul>
     var addVideoBtn = document.createElement("a");
-    addVideoBtn.href = "upload.html?playlistId=" + playlist.id;
+    addVideoBtn.href = "#upload?playlistId=" + playlist.id;
     var addVideoIcon = document.createElement("i");
     addVideoIcon.className = "fa fa-upload";                                              //     </div>
   
@@ -335,3 +335,4 @@ function confirmDeleteVideo(videoId, videoName) {
     document.querySelector("#delete-playlist-modal > div > div > div.modal-body button.btn.danger-color").removeAttribute("onclick");
     document.querySelector("#delete-playlist-modal > div > div > div.modal-body button.btn.danger-color").setAttribute("onclick", 'deleteVideo(\"' + videoId + '\")');
 }
+loadNBindPlaylist();

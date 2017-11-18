@@ -147,7 +147,7 @@ function convertLocationSearchToJSON(search) {
 }
 
 function loadPage(hash) {
-    document.querySelector("#progress-bar").style.display = "";
+    document.querySelector("#progress-bar").parentNode.style.display = "";
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState === 1) {
@@ -165,7 +165,7 @@ function loadPage(hash) {
             document.querySelector("#progress-bar").style.width = "95%";
             $(document).ready(function () {
                 setTimeout(function () {
-                    document.querySelector("#progress-bar").style.display = "none";
+                    document.querySelector("#progress-bar").parentNode.style.display = "none";
                     document.querySelector("#progress-bar").style.width = "0";
                 }, 500)
             })
@@ -175,26 +175,48 @@ function loadPage(hash) {
     xhttp.send();
 }
 function loadPageByHash() {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.id = "viewScript";
     if (location.hash === "") {
         loadPage('pages/home.htm');
+        $("#viewScript").remove();
+        script.src = "js/home.min.js";
+        document.body.appendChild(script);
     }
     else if (location.hash === "#playlist") {
         loadPage('pages/playlist.htm');
+        $("#viewScript").remove();
+        script.src = "js/playlist.min.js";
+        document.body.appendChild(script);
     }
     else if (location.hash === "#about") {
         loadPage('pages/about.htm');
+        $("#viewScript").remove();
     }
     else if (location.hash.match(/#upload/gi) !== null) {
         loadPage('pages/upload.htm');
+        $("#viewScript").remove();
+        script.src = "js/upload.min.js";
+        document.body.appendChild(script);
     }
     else if (location.hash.match(/#watch/gi) !== null) {
-        loadPage('pages/watch.htm')
+        loadPage('pages/watch.htm');
+        $("#viewScript").remove();
+        script.src = "js/watch.min.js";
+        document.body.appendChild(script);
     }
     else if (location.hash === "#signup") {
-        loadPage('pages/signup.htm')
+        loadPage('pages/signup.htm');
+        $("#viewScript").remove();
+        script.src = "js/signup.min.js";
+        document.body.appendChild(script);
     }
     else {
         loadPage('pages/home.htm');
+        $("#viewScript").remove();
+        script.src = "js/home.min.js";
+        document.body.appendChild(script);
     }
 }
 function activeNavbarByHash() {
@@ -228,7 +250,7 @@ window.addEventListener("hashchange",function(event){
         document.body.removeChild(document.querySelector(".modal-backdrop.fade.show"));
     }
     catch (error) {
-        console.log(error);
+        console.log('No modal to clear!');
     }
     loadPageByHash();
     activeNavbarByHash();

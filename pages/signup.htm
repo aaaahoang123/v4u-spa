@@ -1,1 +1,116 @@
-<link rel="stylesheet" href="css/bootstrap-datepicker3.standalone.min.css"><link rel="stylesheet" href="css/jquery.material.form.min.css"><style>[type=radio]+label:after,[type=radio]+label:before{content:normal}ul,menu,dir{list-style-type:none}[type=radio]+label,[type=checkbox]+label{height:37px}.material .material-select{padding-top:10px}.material .material-select.filled>.material-title,.material .material-select>input:checked+.material-title{top:-18px;color:#757575}.material .material-select ul{z-index:9999}</style><main class="container"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="#">Home</a></li><li class="breadcrumb-item active">Đăng ký</li></ol><section><form name="signup-form" id="signup-form"><p class="h5 text-center mb-4">Đăng ký</p><div class="row"><div class="col-md-6"><div class="md-form"><i class="fa fa-user-circle-o prefix grey-text"></i><input type="text" class="form-control" name="username" minlength="7" required pattern="[A-Za-z0-9]*"><label>Tài khoản</label></div></div><div class="col-md-6"><div class="md-form"><i class="fa fa-envelope prefix grey-text"></i><input type="email" class="form-control" name="email" minlength="7" required><label>Email</label></div></div></div><div class="row"><div class="col-md-6"><div class="md-form"><i class="fa fa-lock prefix grey-text"></i><input type="password" class="form-control" name="password" minlength="7" required><label>Mật khẩu</label></div></div><div class="col-md-6"><div class="md-form"><i class="fa fa-keyboard-o prefix grey-text"></i><input type="password" class="form-control" name="confirm-password" required><label>Nhập lại mật khẩu</label></div></div></div><div class="row"><div class="col-md-6"><div class="md-form"><i class="fa fa-id-card-o prefix grey-text"></i><input type="text" class="form-control" name="full-name"><label>Họ tên</label></div></div><div class="col-md-6"><div class="md-form date" data-provide="datepicker"><i class="fa fa-birthday-cake prefix grey-text"></i><input type="text" class="form-control" name="birthday" placeholder="Tháng/Ngày/Năm"><label class="active">Sinh nhật</label><div class="input-group-addon" style="display:none"></div></div></div></div><div class="row"><div class="col-md-6"><div class="md-form"><i class="fa fa-smile-o prefix grey-text"></i><input type="text" class="form-control" name="avatar"><label>Avatar URL</label></div></div><div class="col-md-6" style="margin-top:5px"><div class="material"><select name="gender" placeholder="Giới tính"><option value="2" selected>Khác</option><option value="0">Nam</option><option value="1">Nữ</option></select></div></div></div><div class="mx-5 pt-3 mb-1"><p class="font-small grey-text d-flex justify-content-end">Đã có tài khoản? <a data-toggle="modal" data-target="#modalLoginForm" class="blue-text ml-1"> Đăng nhập</a></p></div><div class="text-center"><button type="button" class="btn blue-gradient" onclick="signUp()">Đăng ký</button><button type="reset" class="btn purple-gradient" onclick="resetForm()">Reset</button></div></form></section></main><script type="text/javascript" src="js/jquery.material.form.min.js"></script><script type="text/javascript" src="js/bootstrap-datepicker.min.js"></script><script type="text/javascript" src="js/signup.min.js"></script><script type="text/javascript">$(document).ready(function(){$(".material").materialForm()});$(".datepicker").datepicker({format:"mm/dd/yyyy",Date:"-3d"});</script>
+<link rel="stylesheet" href="css/bootstrap-datepicker3.standalone.min.css">
+<link rel="stylesheet" href="css/jquery.material.form.min.css">
+<style>
+    [type=radio]+label:after, [type=radio]+label:before {
+        content: normal;
+    }
+    ul, menu, dir {
+        list-style-type: none;
+    }
+    [type=radio]+label, [type=checkbox]+label {
+        height: 37px;
+    }
+    .material .material-select {
+        padding-top: 10px;
+    }
+    .material .material-select.filled>.material-title, .material .material-select>input:checked+.material-title {
+        top: -18px;
+        color: #757575
+    }
+    .material .material-select ul {
+        z-index: 9999;
+    }
+</style>
+<!-- main -->
+<main class="container">
+    <!-- bread crumb -->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item active">Đăng ký</li>
+    </ol>
+    <section>
+        <!-- Form sign up -->
+        <form name="signup-form" id="signup-form">
+            <p class="h5 text-center mb-4">Đăng ký</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="md-form">
+                        <i class="fa fa-user-circle-o prefix grey-text"></i>
+                        <input type="text" class="form-control" name="username" minlength="7" required pattern="[A-Za-z0-9]*">
+                        <label>Tài khoản</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="md-form">
+                        <i class="fa fa-envelope prefix grey-text"></i>
+                        <input type="email" class="form-control" name="email" minlength="7" required>
+                        <label>Email</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="md-form">
+                        <i class="fa fa-lock prefix grey-text"></i>
+                        <input type="password" class="form-control" name="password" minlength="7" required>
+                        <label>Mật khẩu</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="md-form">
+                        <i class="fa fa-keyboard-o prefix grey-text"></i>
+                        <input type="password" class="form-control" name="confirm-password" required>
+                        <label>Nhập lại mật khẩu</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="md-form">
+                        <i class="fa fa-id-card-o prefix grey-text"></i>
+                        <input type="text" class="form-control" name="full-name">
+                        <label>Họ tên</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="md-form date" data-provide="datepicker">
+                        <i class="fa fa-birthday-cake prefix grey-text"></i>
+                        <input type="text" class="form-control" name="birthday" placeholder="Tháng/Ngày/Năm">
+                        <label class="active">Sinh nhật</label>
+                        <div class="input-group-addon" style="display: none"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="md-form">
+                        <i class="fa fa-smile-o prefix grey-text"></i>
+                        <input type="text" class="form-control" name="avatar">
+                        <label>Avatar URL</label>
+                    </div>
+                </div>
+                <div class="col-md-6" style="margin-top: 5px">
+                    <div class="material">
+                        <select name="gender"  placeholder="Giới tính">
+                            <option value="2" selected>Khác</option>
+                            <option value="0">Nam</option>
+                            <option value="1">Nữ</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="mx-5 pt-3 mb-1">
+                <p class="font-small grey-text d-flex justify-content-end">Đã có tài khoản? <a data-toggle="modal" data-target="#modalLoginForm" class="blue-text ml-1"> Đăng nhập</a></p>
+            </div>
+            <div class="text-center">
+                <button type="button" class="btn blue-gradient" onclick="signUp()">Đăng ký</button>
+                <button type="reset" class="btn purple-gradient" onclick="resetForm()">Reset</button>
+            </div>
+        </form>
+
+        <!-- Form login -->
+    </section>
+</main>
+<!--Footer-->
+<script type="text/javascript" src="js/jquery.material.form.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-datepicker.min.js"></script>
