@@ -52,96 +52,103 @@
     <!--Panel-->
     <section>
         <h4 class="card-title">Thêm video</h4>
-        <div class="row">
-            <div class="col-md-6 card card-body" ondragover="allowDrop(event)" ondrop="drop(event)">
-                <!-- Form contact -->
-                <form action="upload" name="uploadForm">
-                    <p class="h5 text-center mb-4">Thông tin video</p>
-                    <!-- Video Id -->
-                    <div class="md-form">
-                        <i class="fa fa-id-badge prefix grey-text"></i>
-                        <input type="text" class="form-control" name="youtubeId" onblur="checkNDemoVideo()" maxlength="11" minlength="11" pattern="[A-Za-z0-9_-]*" required>
-                        <label>Video Id</label>
-                    </div>
-                    <!-- Video Name -->
-                    <div class="md-form">
-                        <i class="fa fa-youtube prefix grey-text"></i>
-                        <input type="text" class="form-control" name="name" maxlength="50" minlength="3" required>
-                        <label>Tên video</label>
-                    </div>
-                    <!-- Description -->
-                    <div class="md-form">
-                        <i class="fa fa-info prefix grey-text"></i>
-                        <textarea type="text" class="md-textarea" style="height: 100px" name="description"></textarea>
-                        <label>Mô tả</label>
-                    </div>
-                    <!-- Key words -->
-                    <div class="md-form">
-                        <i class="fa fa-key prefix grey-text"></i>
-                        <input type="text" class="form-control" name="keywords">
-                        <label>Từ khóa</label>
-                    </div>
-                    <!-- Playlist -->
-                    <div class="md-form">
-                        <i class="fa fa-list prefix grey-text"></i>
-                    </div>
-                    <div class="ml-5 material" id="playlist-select">
-                        <select name="playlistId" placeholder="Playlist">
-                            <option value="0" selected>Playlist chung</option>
-                        </select>
-                    </div>
+        <div class="row card-group">
+            <div class="col-md-6 padding-thumb" ondragover="allowDrop(event)" ondrop="drop(event)">
+                <div class="card">
+                    <div class="card-body">
+                                <!-- Form upload -->
+                        <form action="upload" name="uploadForm">
+                            <p class="h5 text-center mb-4">Thông tin video</p>
+                            <!-- Video Id -->
+                            <div class="md-form">
+                                <i class="fa fa-id-badge prefix grey-text"></i>
+                                <input type="text" class="form-control" name="youtubeId" onblur="checkNDemoVideo()" maxlength="11" minlength="11" pattern="[A-Za-z0-9_-]*" required>
+                                <label>Video Id</label>
+                            </div>
+                            <!-- Video Name -->
+                            <div class="md-form">
+                                <i class="fa fa-youtube prefix grey-text"></i>
+                                <input type="text" class="form-control" name="name" maxlength="50" minlength="3" required>
+                                <label>Tên video</label>
+                            </div>
+                            <!-- Description -->
+                            <div class="md-form">
+                                <i class="fa fa-info prefix grey-text"></i>
+                                <textarea type="text" class="md-textarea" style="height: 100px" name="description"></textarea>
+                                <label>Mô tả</label>
+                            </div>
+                            <!-- Key words -->
+                            <div class="md-form">
+                                <i class="fa fa-key prefix grey-text"></i>
+                                <input type="text" class="form-control" name="keywords">
+                                <label>Từ khóa</label>
+                            </div>
+                            <!-- Playlist -->
+                            <div class="md-form">
+                                <i class="fa fa-list prefix grey-text"></i>
+                            </div>
+                            <div class="ml-5 material" id="playlist-select">
+                                <select name="playlistId" placeholder="Playlist">
+                                    <option value="0" selected>Playlist chung</option>
+                                </select>
+                            </div>
+                            <div class="text-center padding-thumb">
+                                <button type="button" class="btn btn-deep-orange" onclick="addVideo()" id="add-video-btn">Thêm &nbsp;<i class="fa fa-chevron-up fa-fw"></i><i class="fa fa-spinner fa-pulse" style="display: none"></i></button>
+                            </div>
 
-                    <div class="text-center">
-                        <button type="button" class="btn btn-deep-orange" onclick="addVideo()" id="add-video-btn">Thêm &nbsp;<i class="fa fa-chevron-up fa-fw"></i><i class="fa fa-spinner fa-pulse" style="display: none"></i></button>
+                        </form>
+                        <!-- Form upload -->
                     </div>
-
-                </form>
-                <!-- Form contact -->
+                </div>
+                
             </div>
-            <div class="col-md-6 card card-body" id="demo-card">
-                <div id="searchVideoTab">
-                    <div class="md-form input-group">
-                        <span class="input-group-btn">
-                            <button class="btn btn-blue-grey btn-lg" type="button" onclick="getVideo('')"><i class="fa fa-search"></i></button>
-                        </span>
-                        <input type="text" class="form-control" placeholder="Tìm kiếm video" id="search-query" onkeyup="enterToGetVideo(event)">
+            <div class="col-md-6 padding-thumb" id="demo-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div id="searchVideoTab">
+                            <div class="md-form input-group">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-blue-grey btn-lg" type="button" onclick="getVideo('')"><i class="fa fa-search"></i></button>
+                                </span>
+                                <input type="text" class="form-control" placeholder="Tìm kiếm video" id="search-query" onkeyup="enterToGetVideo(event)">
+                            </div>
+                            <div class="row display-flex" id="videos-thumb">
+                                <!--<div class="col-lg-6 col-md-12">-->
+                                <!--<div class="card padding-thumb">-->
+                                <!--<img src="https://i.ytimg.com/vi/iKzRIweSBLA/mqdefault.jpg" alt="" style="width: 100%">-->
+                                <!--</div>-->
+                                <!--<span>ákjdhajksdh</span>-->
+                                <!--</div>-->
+                            </div>
+                            <br>
+                            <nav class="row" style="display: none">
+                                <ul class="pagination pagination-lg pg-blue">
+                                    <li class="page-item disabled" id="prev-page-btn">
+                                        <a class="page-link" aria-label="Previous" onclick="return prevSearchPage()">
+                                            <span aria-hidden="true">Prev</span>
+                                            <span class="sr-only">Previous</span>
+                                        </a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" aria-label="Next" onclick="return nextSearchPage()">
+                                            <span aria-hidden="true">Next</span>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="animated flipInY" style="display: none" id="demoVideoTab">
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item" src=""></iframe>
+                            </div>
+                            <br>
+                            <h5 class="grey-text"></h5>
+                            <button type="button" class="btn btn-default" onclick="toSearchVideoTab()"><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;Quay lại</button>
+                            <button type="button" class="btn btn-info"><i class="fa fa-hand-o-right" aria-hidden="true"></i> Thông tin</button>
+                        </div>
                     </div>
-                    <div class="row display-flex" id="videos-thumb">
-                        <!--<div class="col-lg-6 col-md-12">-->
-                        <!--<div class="card padding-thumb">-->
-                        <!--<img src="https://i.ytimg.com/vi/iKzRIweSBLA/mqdefault.jpg" alt="" style="width: 100%">-->
-                        <!--</div>-->
-                        <!--<span>ákjdhajksdh</span>-->
-                        <!--</div>-->
-                    </div>
-                    <br>
-                    <nav class="row" style="display: none">
-                        <ul class="pagination pagination-lg pg-blue">
-                            <li class="page-item disabled" id="prev-page-btn">
-                                <a class="page-link" aria-label="Previous" onclick="return prevSearchPage()">
-                                    <span aria-hidden="true">Prev</span>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" aria-label="Next" onclick="return nextSearchPage()">
-                                    <span aria-hidden="true">Next</span>
-                                    <span class="sr-only">Next</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
                 </div>
-                <div class="animated flipInY" style="display: none" id="demoVideoTab">
-                    <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" src=""></iframe>
-                    </div>
-                    <br>
-                    <h5 class="grey-text"></h5>
-                    <button type="button" class="btn btn-default" onclick="toSearchVideoTab()"><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;Quay lại</button>
-                    <button type="button" class="btn btn-info"><i class="fa fa-hand-o-right" aria-hidden="true"></i> Thông tin</button>
-                </div>
-
             </div>
         </div>
 

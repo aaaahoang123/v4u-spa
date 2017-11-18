@@ -2,7 +2,7 @@ if (userToken === null) {
     $("#alert-modal").modal();
 }
 else {
-    document.querySelector("main.container").style.display = "";
+    document.querySelector("main.container").style.display = "inherit";
 }
 
 var videoDataToSend = new videoData();
@@ -53,7 +53,7 @@ videoData.prototype.demo = function () {
     videoDataToSend = this;
     document.querySelector("#demoVideoTab > div > iframe").src = 'https://www.youtube.com/embed/' + this.data.attributes.youtubeId + '?autoplay=1';
     document.querySelector("#demoVideoTab > h5").innerHTML = this.data.attributes.name;
-    document.querySelector("#demoVideoTab > button.btn.btn-info").addEventListener("click", autoComplete);
+    document.querySelector("#demoVideoTab > button.btn.btn-info").onclick = autoComplete;
     toDemoVideoTab();
 };
 // bind value to HTML method
