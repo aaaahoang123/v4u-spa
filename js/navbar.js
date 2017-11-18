@@ -171,7 +171,7 @@ function loadPage(hash) {
             })
         }
     };
-    xhttp.open('GET', hash, true);
+    xhttp.open('GET', hash, false);
     xhttp.send();
 }
 function loadPageByHash() {
