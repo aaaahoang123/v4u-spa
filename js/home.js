@@ -14,6 +14,10 @@ videoData.prototype.display = function () {
     // card
     var card = document.createElement("div");
     card.className = "card";
+    card.addEventListener('dragstart', function (event) {
+        dragVideo(event, dataVideoToPlay);
+    });
+    card.draggable = 'true';
     // view
     var view = document.createElement("div");
     view.className = "view overlay waves-effect waves-light z-depth-1";
@@ -29,10 +33,6 @@ videoData.prototype.display = function () {
     anchorPlayer.addEventListener('click', function() {
         playVideo(dataVideoToPlay);
     });
-    anchorPlayer.addEventListener('dragstart', function (event) {
-        dragVideo(event, dataVideoToPlay);
-    });
-    anchorPlayer.setAttribute("draggable", "true");
     // mask
     var mask = document.createElement("div");
     mask.className = "mask flex-center";
@@ -239,11 +239,12 @@ function bindPlaylistToSide(playlist, e) {
 }
 // Bind playlist to Modal
 function bindPlaylistToModal(pl, e) {
-    var playlistId = pl.id;
     var playlist = document.createElement("a");
     playlist.className = "dropdown-item";
     playlist.appendChild(document.createTextNode(pl.attributes.name));
-    playlist.setAttribute("onclick", "addVideoToPlaylist(" + playlistId + ")");
+    playlist.onclick = function() {
+        addVideoToPlaylist(pl.id)
+    };
     e.appendChild(playlist);
 }
 // Add more playlist

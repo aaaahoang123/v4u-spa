@@ -447,7 +447,7 @@ function deleteVideo(videoId) {
                 $("#videoFormModal").modal("hide");
                 $("#alert-delete-video").modal("hide");
                 setTimeout(function () {
-					location.href = "../index.html";
+					location.href = "#";
                 }, 1000);
                 console.log(response);
             }
@@ -463,7 +463,6 @@ function deleteVideo(videoId) {
     xhttp.send();
 }
 
-// drag and drop
 //drag and drop
 function dragVideo(event, videoObj) {
     event.dataTransfer.setData("text/plain",JSON.stringify(videoObj));
@@ -483,7 +482,7 @@ function drop(event, playlistId) {
 
 }
 
-// Load the page by location.search object
+// Load the page by location.hash object
 
 if (location.hash === "#watch") {
     $("#alertModal").modal();
@@ -515,7 +514,7 @@ else {
             loadPlaylistDetail("");
 		}
         else {
-
+            $("#y-video-activator").remove()
         }
 	}
 	else if (searchObj.plid !== undefined) {
