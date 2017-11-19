@@ -1,6 +1,12 @@
 body {
         padding-top: 70px;
 }
+.modal-open-no-padding[style] {
+    padding-right:0 !important;
+}
+.modal-open-no-padding.modal-open {
+    overflow: auto;
+}
 .navbar .dropdown-menu a.active,
 .navbar .dropdown-menu a:active {
     color: #fff !important;

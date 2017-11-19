@@ -255,3 +255,8 @@ window.addEventListener("hashchange",function(event){
     loadPageByHash();
     activeNavbarByHash();
 });
+$('.modal').on('show.bs.modal', function (e) {
+    $('body').addClass('modal-open-no-padding');
+    $('.fixed-top').addClass('modal-open-no-padding');
+    $('.sticky-top').addClass('modal-open-no-padding');
+});
