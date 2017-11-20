@@ -122,12 +122,13 @@ function takeInfoOfVideo() {
           if (this.status === 200) {
               var response = JSON.parse(this.responseText);
               if (response.pageInfo.totalResults !== 0) {
-                  if (response.items[0].snippet.tags !== undefined) {
+                  try {
                       var keywords = JSON.stringify(response.items[0].snippet.tags);
-                      keywords = keywords.replace("[", "");
-                      keywords = keywords.replace("]", "");
-                      videoDataToSend.data.attributes.keywords = keywords;
                   }
+                  catch (err) {
+                      keywords = "";
+                  }
+                  videoDataToSend.data.attributes.keywords = keywords;
                   videoDataToSend.data.attributes.description = response.items[0].snippet.description;
                   videoDataToSend.data.attributes.name = response.items[0].snippet.title;
               }

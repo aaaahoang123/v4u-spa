@@ -24,12 +24,10 @@ videoData.prototype.watchVideo = function () {
     var createdTime = new Date(this.createdTime).toLocaleDateString();
     document.querySelector("#watching-video > div.card > div.card-body").querySelectorAll("p span")[0].innerHTML = createdTime;
     document.querySelector("#watching-video > div.card > div.card-body").querySelectorAll("p span")[1].innerHTML = this.data.attributes.description;
-    var keywords = JSON.stringify(this.data.attributes.keywords);
-    if (keywords !== undefined) {
-        keywords = keywords.replace("[", "");
-        keywords = keywords.replace("]", "");
-	}
-	document.getElementById("video-keyword").innerHTML = keywords;
+    if (this.data.attributes.keywords !== undefined) {
+        document.getElementById("video-keyword").innerHTML = this.data.attributes.keywords;
+    }
+	
 };
 
 videoData.prototype.bindToSide = function () {
@@ -250,7 +248,6 @@ function loadVideoOfPlaylist(plId, id) {
 						}
 					}
 					var watchingVideo = new videoData(response[j].attributes.youtubeId, response[j].attributes.name, response[j].attributes.description, response[j].attributes.keywords, plId, response[j].attributes.thumbnail);
-                	console.log(watchingVideo);
                 	watchingVideo.bindToForm();
                     document.querySelector("#videoFormModal > div > div > div.modal-footer > button").addEventListener("click", function () {
 						editVideo(watchingVideo.id);
@@ -268,7 +265,13 @@ function loadVideoOfPlaylist(plId, id) {
                         loadVideoOfYoutube(watchingVideo.data.attributes.youtubeId, {
                             success: function (resp) {
                                 if (resp !== undefined) {
-                                    var video = new videoData(resp.id, resp.snippet.title, resp.snippet.description, resp.snippet.tags,  "", resp.snippet.thumbnails.medium.url);
+                                    try {
+                                        var keywords = JSON.stringify(resp.snippet.tags);
+                                    }
+                                    catch (err) {
+                                        keywords = "";
+                                    }
+                                    var video = new videoData(resp.id, resp.snippet.title, resp.snippet.description, keywords,  "", resp.snippet.thumbnails.medium.url);
                                     video.bindToForm();
                                 }
                                 else {
@@ -286,6 +289,14 @@ function loadVideoOfPlaylist(plId, id) {
                     });
                     watchingVideo.addIdCrTime(response[j].id, response[j].attributes.createdTimeMLS);
                     loadSuggestVideo(watchingVideo.data.attributes.name);
+                    try {
+                        watchingVideo.data.attributes.keywords = JSON.parse(watchingVideo.data.attributes.keywords);
+                        watchingVideo.data.attributes.keywords = JSON.stringify(watchingVideo.data.attributes.keywords, null, "\t");
+                        watchingVideo.data.attributes.keywords = watchingVideo.data.attributes.keywords.replace("[", "").replace("]", "");
+                    }
+                    catch (err) {
+                        watchingVideo.data.attributes.keywords = watchingVideo.data.attributes.keywords;
+                    }
                     watchingVideo.watchVideo();
                     response.splice(j, 1);
                     for (i=0; i<response.length/6; i++) {
@@ -496,9 +507,18 @@ else {
         loadVideoOfYoutube(searchObj.yid, {
             success: function (response) {
                 if (response !== undefined) {
-                    var video = new videoData(response.id, response.snippet.title, response.snippet.description, response.snippet.tags,  "", response.snippet.thumbnails.medium.url);
+                    try {
+                        var keywords = JSON.stringify(response.snippet.tags);
+                        var keywords1 = JSON.stringify(response.snippet.tags, null, "\t");
+                        keywords1 = keywords1.replace("[", "").replace("]", "");
+                    }
+                    catch (err) {
+                        keywords = "";keywords1 = "";
+                    }
+                    var video = new videoData(response.id, response.snippet.title, response.snippet.description, keywords,  "", response.snippet.thumbnails.medium.url);
                     video.bindToForm();
                     document.querySelector("#videoFormModal > div > div > div.modal-footer > button").addEventListener("click", uploadVideo);
+                    video.data.attributes.keywords = keywords1;
                     video.addIdCrTime("", response.snippet.publishedAt);
                     video.watchVideo();
                     loadSuggestVideo(response.snippet.title);
