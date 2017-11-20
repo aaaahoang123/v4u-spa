@@ -89,8 +89,7 @@ function bindPlaylist(playlist) {
 
     cardBody.appendChild(text);                                                 //     </div> <!--/.Card content-->
     card.appendChild(cardBody);
-
-                                                                                //     <!-- Card footer -->
+    //Card footer
     var cardFooter = document.createElement("div");                             //     <div class="card-data">
     cardFooter.className = "card-data";
 
@@ -296,9 +295,10 @@ function deletePlaylist(plId) {
 
 function confirmDeletePl(plId, plName) {
     $("#delete-playlist-modal").modal("show");
-    document.querySelector("#delete-playlist-modal > div > div > div.modal-header > h5").innerHTML = "Bạn thực sự muốn xóa playlist " + plName + "?";
-    document.querySelector("#delete-playlist-modal > div > div > div.modal-body button.btn.danger-color").removeAttribute("onclick");
-    document.querySelector("#delete-playlist-modal > div > div > div.modal-body button.btn.danger-color").setAttribute("onclick", 'deletePlaylist(\"' + plId + '\")');
+    document.querySelector("#delete-playlist-modal > div > div > div > div > p").innerHTML = "Bạn thực sự muốn xóa playlist <strong class='red-text'>" + plName + "</strong>?";
+    document.querySelector("#delete-playlist-modal > div > div > div.modal-footer a.btn-primary-modal").onclick = function() {
+        deletePlaylist(plId);
+    }
 }
 
 function signInFromAlert() {
@@ -331,8 +331,9 @@ function deleteVideo(videoId) {
 
 function confirmDeleteVideo(videoId, videoName) {
     $("#delete-playlist-modal").modal("show");
-    document.querySelector("#delete-playlist-modal > div > div > div.modal-header > h5").innerHTML = "Bạn thực sự muốn xóa video " + videoName + "?";
-    document.querySelector("#delete-playlist-modal > div > div > div.modal-body button.btn.danger-color").removeAttribute("onclick");
-    document.querySelector("#delete-playlist-modal > div > div > div.modal-body button.btn.danger-color").setAttribute("onclick", 'deleteVideo(\"' + videoId + '\")');
+    document.querySelector("#delete-playlist-modal > div > div > div > div > p").innerHTML = "Bạn thực sự muốn xóa video <strong class='red-text'>" + videoName + "</strong>?";
+    document.querySelector("#delete-playlist-modal > div > div > div.modal-footer a.btn-primary-modal").onclick = function () {
+        deleteVideo(videoId);
+    }
 }
 loadNBindPlaylist();

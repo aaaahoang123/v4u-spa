@@ -1,40 +1,64 @@
 <!-- Delete Playlist Modal -->
-<section class="modal animated fadeIn" id="delete-playlist-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm" role="document">
+<section class="modal animated fadeIn" id="delete-playlist-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-notify modal-danger" role="document">
+        <!--Content-->
         <div class="modal-content">
-            <div class="modal-header text-center">
-                <h5 class="modal-title w-100 font-bold"></h5>
+            <!--Header-->
+            <div class="modal-header">
+                <p class="heading">Cảnh báo</p>
+
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true" class="white-text">×</span>
                 </button>
             </div>
+
+            <!--Body-->
             <div class="modal-body">
-                <button type="button" class="btn danger-color"><i class="fa fa-trash"></i> Xóa</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-chevron-left"></i> Đóng</button>
+                <div class="text-center">
+                    <i class="fa fa-remove fa-4x mb-3 animated rotateIn"></i>        
+                    <p></p>
+                </div>
             </div>
-            
+
+            <!--Footer-->
+            <div class="modal-footer justify-content-center">
+                <a type="button" class="btn btn-primary-modal waves-effect waves-light">Xóa <i class="fa fa-trash ml-1"></i></a>
+                <a type="button" class="btn btn-outline-secondary-modal waves-effect" data-dismiss="modal">Đóng</a>
+            </div>
         </div>
+        <!--/.Content-->
     </div>
 </section>
 
 <!-- Alert when no signin -->
-<section class="modal animated fadeIn" id="alert-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm" role="document">
+<section class="modal animated fadeIn" id="alert-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-notify modal-info" role="document">
+        <!--Content-->
         <div class="modal-content">
-            <div class="modal-header text-center">
-                <h5 class="modal-title w-100 font-bold">Bạn chưa đăng nhập</h5>
+            <!--Header-->
+            <div class="modal-header">
+                <p class="heading">Bạn chưa đăng nhập</p>
+
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true" class="white-text">×</span>
                 </button>
             </div>
+
+            <!--Body-->
             <div class="modal-body">
-                <p class="grey-text">Playlist là tính năng dành cho thành viên! Nếu bạn là thành viên, hãy đăng nhập, nếu bạn chưa phải thành viên, hãy đăng ký để tham gia với chúng tôi!</p>
                 <div class="text-center">
-                    <a type="button" class="btn btn-primary btn-sm" href="#signup"><i class="fa fa-registered"></i> Đăng ký</a>
-                    <a type="button" class="btn btn-default btn-sm" onclick="signInFromAlert()"><i class="fa fa-sign-in"></i> Đăng nhập</a> 
+                    <i class="fa fa-info fa-4x mb-3 animated rotateIn"></i>        
+                    <p><strong>Playlist là tính năng dành cho thành viên! Nếu bạn là thành viên, hãy đăng nhập, nếu bạn chưa phải thành viên, hãy đăng ký để tham gia với chúng tôi!</strong></p>
                 </div>
             </div>
+
+            <!--Footer-->
+            <div class="modal-footer justify-content-center">
+                <a type="button" class="btn btn-primary-modal waves-effect waves-light" onclick="signInFromAlert()">Đăng nhập <i class="fa fa-sign-in ml-1"></i></a>
+                <a type="button" class="btn btn-outline-secondary-modal waves-effect" href="#signup">Đăng ký <i class="fa fa-registered ml-1"></i></a>
+            </div>
         </div>
+        <!--/.Content-->
     </div>
 </section>
 <!-- main -->

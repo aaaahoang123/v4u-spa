@@ -161,7 +161,7 @@ function loadPage(hash) {
         }
         if (this.readyState === 4) {
             var resp = this.responseText;
-            $("#v-view").html(resp);
+            document.getElementById("v-view").innerHTML = resp;
             document.querySelector("#progress-bar").style.width = "95%";
             $(document).ready(function () {
                 setTimeout(function () {
