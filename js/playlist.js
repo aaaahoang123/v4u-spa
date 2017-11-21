@@ -4,7 +4,9 @@ if (userToken === null) {
 else {
     document.querySelector("main.container").style.display = "";
 }
-var playlistArray = new Array();
+var playlistToEditId = "",
+    playlistArray = new Array();
+
 function loadNBindPlaylist() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
@@ -99,20 +101,38 @@ function bindPlaylist(playlist) {
     var clockIcon = document.createElement("i");
     clockIcon.className = "fa fa-clock-o";
     createTime.appendChild(clockIcon);
-    createTime.appendChild(document.createTextNode(new Date(playlist.attributes.createdTimeMLS).toLocaleDateString()));
+    createTime.appendChild(document.createTextNode(" " + new Date(playlist.attributes.createdTimeMLS).toLocaleDateString()));
     listData.appendChild(createTime);
 
     var addVideo = document.createElement("li");                                     //     <li><a><i class="fa fa-plus"></i>Thêm video</a></li> //     </ul>
     var addVideoBtn = document.createElement("a");
     addVideoBtn.href = "#upload?playlistId=" + playlist.id;
     var addVideoIcon = document.createElement("i");
-    addVideoIcon.className = "fa fa-upload";                                              //     </div>
+    addVideoIcon.className = "fa fa-plus";                                              //     </div>
   
     addVideoBtn.appendChild(addVideoIcon);
-    addVideoBtn.appendChild(document.createTextNode("Upload")); //     <!-- Card footer -->    </div><!--/.Card--> </div> <!/ column>
+    addVideoBtn.appendChild(document.createTextNode("Thêm")); //     <!-- Card footer -->    </div><!--/.Card--> </div> <!/ column>
     addVideo.appendChild(addVideoBtn);
 
+    var editPl = document.createElement("li");
+    var editPlBtn = document.createElement("a");
+    editPlBtn.onclick = function() {
+        document.querySelector("#form19").value = playlist.attributes.name;
+        document.querySelector("#form8").value = playlist.attributes.description;
+        document.querySelector("#form21").value = playlist.attributes.thumbnailUrl;
+        var labels = document.querySelector("#edit-playlist-modal").querySelectorAll("label");
+        for (var i=0; i<labels.length; i++) {
+                labels[i].className = "active";
+        }
+        playlistToEditId = playlist.id;
+        $("#edit-playlist-modal").modal();
+    };
+    var editPlIcon = document.createElement("i");
+    editPlIcon.className = "fa fa-edit";
 
+    editPlBtn.appendChild(editPlIcon);
+    editPlBtn.appendChild(document.createTextNode("Sửa"));
+    editPl.appendChild(editPlBtn);
 
     var deletePl = document.createElement("li");                                     //     <li><a><i class="fa fa-plus"></i>Thêm video</a></li> //     </ul>
     var deletePlBtn = document.createElement("a");
@@ -127,6 +147,7 @@ function bindPlaylist(playlist) {
     deletePl.appendChild(deletePlBtn);
 
     listData.appendChild(addVideo);
+    listData.appendChild(editPl);
     listData.appendChild(deletePl);
     cardFooter.appendChild(listData);
     card.appendChild(cardFooter);
@@ -336,4 +357,32 @@ function confirmDeleteVideo(videoId, videoName) {
         deleteVideo(videoId);
     }
 }
+
+document.getElementById("edit-btn").onclick = editPlaylist;
+
+function editPlaylist() {
+    var name = document.querySelector("#form19").value;
+    var description = document.querySelector("#form8").value;
+    var thumbnail = document.querySelector("#form21").value;
+    var newPlaylist = new playlistData(name, description, thumbnail);
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+        console.log(this);
+        if (this.readyState === 4) {
+            if (this.status === 200 || this.status === 201) {
+                toastr["success"]("Chỉnh sửa playlist thành công");
+            }
+            else {
+                var resp = JSON.parse(this.response);
+                console.log(resp);
+                toastr["error"]("Xảy ra lỗi khi chỉnh sửa, vui lòng inspect logs và báo cho chúng tôi");
+            }
+        }
+    }
+    xhr.open("PUT", playlistApi + '?id=' + playlistToEditId, 'true');
+    xhttp.setRequestHeader("Content-Type", "application/json");
+    xhttp.setRequestHeader("Authorization", localStorage.getItem('token'));
+    xhr.send(JSON.stringify(newPlaylist));
+}
+
 loadNBindPlaylist();

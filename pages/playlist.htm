@@ -29,6 +29,48 @@
         <!--/.Content-->
     </div>
 </section>
+<!-- Edit playlist Modal -->
+<div class="modal fade" id="edit-playlist-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog cascading-modal" role="document">
+        <!--Content-->
+        <div class="modal-content">
+
+            <!--Header-->
+            <div class="modal-header light-blue darken-3 white-text">
+                <h4 class="title"><i class="fa fa-edit"></i> Chỉnh sửa Playlist</h4>
+                <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <!--Body-->
+            <div class="modal-body mb-0">
+                <div class="md-form form-sm">
+                    <i class="fa fa-th prefix" style="top: .8rem"></i>
+                    <input id="form19" class="form-control mt-1" type="text">
+                    <label for="form19">Tên Playlist</label>
+                </div>
+
+                <div class="md-form form-sm">
+                    <i class="fa fa-info prefix" style="top: .8rem"></i>
+                    <textarea type="text" id="form8" class="md-textarea mb-0"></textarea>
+                    <label for="form8">Mô tả</label>
+                </div>
+
+                <div class="md-form form-sm">
+                    <i class="fa fa-image prefix" style="top: .8rem"></i>
+                    <input id="form21" class="form-control" type="text">
+                    <label for="form21">Thumnail Url</label>
+                </div>
+
+                <div class="text-center mt-1-half">
+                    <button class="btn btn-info mb-2 waves-effect waves-light" type="button" id="edit-btn">Sửa <i class="fa fa-edit ml-1"></i></button>
+                </div>
+
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+</div>
 
 <!-- Alert when no signin -->
 <section class="modal animated fadeIn" id="alert-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
